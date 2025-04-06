@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Todo List</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>TODO</h1>
+            <button id="theme-toggle"><img src="images/icon-moon.svg" alt="icon-moon"></button>
+        </header>
+
+        <div class="todo-input">
+            <input type="text" id="task-input" placeholder="Create a new todo...">
+            <button id="add-task">Add</button>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <div class="filters">
+            <span id="items-left">0 items left</span>
+            <div>
+                <button class="filter active" data-filter="all">All</button>
+                <button class="filter" data-filter="active">Active</button>
+                <button class="filter" data-filter="completed">Completed</button>
+            </div>
+            <button id="clear-completed">Clear Completed</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
