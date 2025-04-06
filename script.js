@@ -51,6 +51,10 @@ function createTask(text) {
   taskList.appendChild(li);
   updateItemsLeft();
   applyFilter();
+
+  if (document.body.classList.contains("dark-mode")) {
+    li.classList.toggle("dark");
+  }
 }
 
 function handleAddTask() {
@@ -100,3 +104,24 @@ function applyFilter() {
     }
   });
 }
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  const icon = document.querySelector("#theme-icon");
+  const listItems = document.querySelectorAll("li");
+
+  icon.style.opacity = 0;
+
+  setTimeout(() => {
+    if (document.body.classList.contains("dark-mode")) {
+      icon.src = "images/icon-sun.svg";
+    } else {
+      icon.src = "images/icon-moon.svg";
+    }
+    icon.style.opacity = 1;
+  }, 200);
+
+  listItems.forEach((li) => {
+    li.classList.toggle("dark", document.body.classList.contains("dark-mode"));
+  });
+});
