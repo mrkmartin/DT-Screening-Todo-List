@@ -65,3 +65,38 @@ addTaskButton.addEventListener("click", handleAddTask);
 taskInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") handleAddTask();
 });
+
+clearCompleted.addEventListener("click", () => {
+  document.querySelectorAll("li.completed").forEach((li) => li.remove());
+  updateItemsLeft();
+});
+
+filters.forEach((button) => {
+  button.addEventListener("click", () => {
+    filters.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+    filter = button.dataset.filter;
+    applyFilter();
+  });
+});
+
+function applyFilter() {
+  const tasks = document.querySelectorAll("#task-list li");
+  tasks.forEach((task) => {
+    switch (filter) {
+      case "all":
+        task.style.display = "flex";
+        break;
+      case "active":
+        task.style.display = task.classList.contains("completed")
+          ? "none"
+          : "flex";
+        break;
+      case "completed":
+        task.style.display = task.classList.contains("completed")
+          ? "flex"
+          : "none";
+        break;
+    }
+  });
+}
