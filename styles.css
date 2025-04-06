@@ -93,6 +93,44 @@ header button {
   font-weight: bold;
 }
 
+ul {
+  list-style: none;
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid hsl(233, 11%, 84%);
+}
+
+li.completed span {
+  text-decoration: line-through;
+  color: hsl(236, 9%, 61%);
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task-left input[type="checkbox"] {
+  accent-color: hsl(220, 98%, 61%);
+}
+
+li button.delete {
+  background: none;
+  border: none;
+  color: hsl(236, 9%, 61%);
+  cursor: pointer;
+}
+
 .filters {
   display: flex;
   justify-content: space-between;
@@ -108,4 +146,9 @@ header button {
   border: none;
   cursor: pointer;
   color: inherit;
+}
+
+.filters button.active {
+  color: hsl(220, 98%, 61%);
+  font-weight: bold;
 }
