@@ -15,13 +15,32 @@ body {
   line-height: 1.5;
   width: 100%;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
+  font-size: clamp(
+    1rem,
+    0.9642857142857143rem + 0.17857142857142858vw,
+    1.125rem
+  );
   background-color: hsl(236, 33%, 92%);
   color: hsl(235, 19%, 35%);
   transition: background-color 0.3s, color 0.3s;
   background-image: url("images/bg-desktop-light.jpg");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+body.dark {
+  background-image: url("images/bg-desktop-dark.jpg");
+}
+
+@media screen and (min-width: 320px) and (max-width: 800px) {
+  body {
+    background-image: url("images/bg-mobile-light.jpg");
+  }
+
+  body.dark {
+    background-image: url("images/bg-mobile-dark.jpg");
+  }
 }
 
 p {
@@ -45,7 +64,7 @@ h6 {
 .container {
   max-width: 500px;
   margin: 3rem auto;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 header {
@@ -58,8 +77,14 @@ header {
 header h1 {
   letter-spacing: 10px;
   color: hsl(0, 0%, 98%);
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  font-size: 1.25rem;
+  font-size: clamp(
+    1.25rem,
+    0.9642857142857143rem + 1.4285714285714286vw,
+    2.25rem
+  );
+  line-height: 1;
+  margin: 0;
 }
 
 header button {
@@ -67,9 +92,12 @@ header button {
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  height: 100%;
 }
 
 #theme-icon {
+  width: clamp(1rem, 2vw, 2rem);
+  height: clamp(1rem, 2vw, 2rem);
   transition: all 200ms cubic-bezier(0.4, 0, 1, 1);
   opacity: 1;
 }
@@ -125,10 +153,13 @@ li {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+}
+
+li:not(:last-child) {
   border-bottom: 1px solid hsl(233, 11%, 84%);
 }
 
-li.dark {
+li:not(:last-child).dark {
   border-bottom: 1px solid hsl(237, 14%, 26%);
 }
 
@@ -141,10 +172,33 @@ li.completed span {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  width: 100%;
 }
 
-.task-left input[type="checkbox"] {
-  accent-color: hsl(220, 98%, 61%);
+.checkboxContainer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.custom-checkbox {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 1px solid hsl(233, 11%, 84%);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.icon-check {
+  display: none;
+  position: absolute;
+  left: 7px;
+  top: 20%;
+  cursor: pointer;
 }
 
 li button.delete {
@@ -179,4 +233,12 @@ li button.delete {
 .filters button.active {
   color: hsl(220, 98%, 61%);
   font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+  .filters {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
 }
